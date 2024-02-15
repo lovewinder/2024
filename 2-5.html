@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  class Person {
+    constructor(name, age) {
+      console.log('constructor 里的this', this)
+      this.name = name
+      this.age = age
+    }
+    test() {
+      console.log("对象方法里的 this", this)
+    }
+    asyncTest() {
+      console.log('this', this)
+      setTimeout(function() {
+        console.log('setTimeout回调中的this', this)
+      }, 0)
+    }
+  }
+
+  const zhangsan = new Person('张三', 20)
+  zhangsan.test()
+
+</script>
+</html>

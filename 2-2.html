@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const oldObj = {
+    name: 'yk',
+    age: 30,
+    colors: ['orange', 'green', 'blue'],
+    target: {
+      money: '1000000000'
+    }
+  }
+  function deepClone(obj) {
+    if( typeof obj !== 'object' || obj == null) {
+      return obj
+    }
+
+    let result;
+
+    if(obj instanceof Array) {
+      result = []
+    } else {
+      result = {}
+    }
+
+    for(let key in obj) {
+      if(obj.hasOwnProperty(key)) {
+        result[key] = deepClone(obj[key])
+      }
+    }
+
+    return result
+  }
+
+  const obj2 = deepClone(oldObj)
+  obj2.target.money = '0'
+  obj2.age = 29
+  console.log("1", oldObj)
+  console.log("2", obj2)
+</script>
+</html>
