@@ -29,5 +29,11 @@
   const zhangsan = new Person('张三', 20)
   zhangsan.test()
 
+  const lisi = zhangsan.test.call({name: 'lisi', age: 30})
+  
+  const wangwu = zhangsan.test.apply({name: 'wangwu', age: 40})
+
+  const emma = zhangsan.test.bind({name: 'emma', age: 34})
+  emma();
 </script>
 </html>
