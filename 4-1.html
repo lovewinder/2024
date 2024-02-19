@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 1, let声明的变量只在声明所在代码块中有效
+  {
+    let a = 10;
+    var b = 1;
+  }
+
+  try {
+    console.log('a', a)
+  } catch(e) {
+    console.log('error', e)
+  }
+  console.log('b', b)
+
+  // 在循环中的使用
+  var c = []
+  for(var ci = 0; ci < 10; ci++) {
+    c[ci] = function () {
+      console.log('ci', ci)
+    }
+  }
+
+  var d = []
+  for(let di = 0; di < 10; di++) {
+    d[di] = function () {
+      console.log('di', di)
+    }
+  }
+  c[6]() // 10 因为var声明的ci, 所以每一个ci都是同一个变量, 只是对应的值发生了改变, 最终ci的值停留在10, 所以在调用方法的时候输出了10
+  d[6]() // 6 let声明的di, 每一个di都只会在自己那一轮循环中生效, 实际上是有10个di, 当调用方法的时候, 可以正确的找当对应的di, 输出正确的值
+  // for循环中设置循环变量的部分是一个父作用域, 循环体中是一个单独的子作用域
+  for (let fi = 0; fi < 3; fi++) {
+    let i = 'abc'
+    console.log(i)
+  }
+  // 结果会输出3次abc
+
+  // 2, 不存在变量提升
+  console.log(foo); // undefined
+  var foo = 2;
+
+  try {
+    console.log(bar); // 报错, ReferenceError: Cannot access 'bar' before initialization
+    let bar = 2;
+  } catch(e) {
+    console.log("bar error", e)
+  }
+
+  // 3, 暂时性死区
+  var tmp = 123;
+  if(true) {
+    tmp = 'abc'; // 报错
+    let tmp; // 注释掉这里, 就不会报错
+  }
+</script>
+</html>
