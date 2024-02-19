@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JSON</title>
+</head>
+
+<body>
+	<script>
+		const obj = {
+			a1: '1',
+			a2: 1,
+			a3: true,
+			a4: [1],
+			a5: null,
+			a6: new Date(),
+			a7: {},
+			a8: NaN,
+			a9: Infinity,
+			a10: new RegExp('a'),
+			a11: new Error(),
+			a12: function () { },
+			a13: undefined,
+		}
+		console.log(JSON.parse(JSON.stringify(obj)));
+	</script>
+</body>
+
+</html>
